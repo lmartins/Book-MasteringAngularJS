@@ -1,8 +1,8 @@
 /*!
  * AngularJSFundamentals
- * 0.1.0:1407423945103 [development build]
+ * 0.1.0:1407427095783 [development build]
  */
-webpackJsonp([0],[
+webpackJsonp([1],[
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -11,57 +11,13 @@ webpackJsonp([0],[
 	// var angular = require('angular');
 	__webpack_require__(1);
 	
-	var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngCookies', 'ngRoute'])
-	  .config(function ($routeProvider) {
-	
-	    $routeProvider.when('/about',
-	      {
-	        template: 'Hello World'
-	      }
-	    );
-	    $routeProvider.when('/newEvent',
-	      {
-	        templateUrl: '/templates/NewEvent.html',
-	        controller: 'EditEventController'
-	      }
-	    );
-	    $routeProvider.when('/events',
-	      {
-	        templateUrl: 'templates/EventList.html',
-	        controller: 'EventListController',
-	        resolve: {
-	          events: function ($route, eventData) {
-	            return eventData.getAllEvents().$promise;
-	          }
-	        }
-	      }
-	    );
-	    $routeProvider.when('/editProfile',
-	      {
-	        templateUrl: 'templates/EditProfile.html',
-	        controller: 'EditProfileController'
-	      }
-	    );
-	    $routeProvider.when('/event/:eventId',
-	      {
-	        templateUrl: '/templates/EventDetails.html',
-	        controller: 'EventController',
-	        resolve: {
-	          event: function ($route, eventData) {
-	            return eventData.getEvent($route.current.pathParams.eventId).$promise;
-	          }
-	        }
-	      }
-	    );
-	    $routeProvider.otherwise({redirectTo: '/events'});
-	    // $locationProvider.html5Mode(true);
-	  })
-	  .factory('myCache', function ($cacheFactory) {
-	    return $cacheFactory('myCache', {capacity: 3})
-	  });
+	var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngCookies', 'ngRoute']);
 	
 	// CONTROLLERS ----------------------------------------------------------------
-	// require('./controllers/EventController');
+	__webpack_require__(2);
+	
+	// HELLO WORD -----------------------------------------------------------------
+	__webpack_require__(3);
 	
 	
 	// DIRECTIVES -----------------------------------------------------------------
@@ -286,6 +242,74 @@ webpackJsonp([0],[
 	
 	
 	})(window, window.angular);
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var eventsApp = angular.module('eventsApp');
+	
+	eventsApp.config(function ($routeProvider) {
+	  $routeProvider.when('/about',
+	    {
+	      template: 'Hello World'
+	    }
+	  );
+	  $routeProvider.when('/newEvent',
+	    {
+	      templateUrl: '/templates/NewEvent.html',
+	      controller: 'EditEventController'
+	    }
+	  );
+	  $routeProvider.when('/events',
+	    {
+	      templateUrl: 'templates/EventList.html',
+	      controller: 'EventListController',
+	      resolve: {
+	        events: function ($route, eventData) {
+	          return eventData.getAllEvents().$promise;
+	        }
+	      }
+	    }
+	  );
+	  $routeProvider.when('/editProfile',
+	    {
+	      templateUrl: 'templates/EditProfile.html',
+	      controller: 'EditProfileController'
+	    }
+	  );
+	  $routeProvider.when('/event/:eventId',
+	    {
+	      templateUrl: '/templates/EventDetails.html',
+	      controller: 'EventController',
+	      resolve: {
+	        event: function ($route, eventData) {
+	          return eventData.getEvent($route.current.pathParams.eventId).$promise;
+	        }
+	      }
+	    }
+	  );
+	  $routeProvider.otherwise({redirectTo: '/events'});
+	  // $locationProvider.html5Mode(true);
+	});
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	
+	var eventsApp = angular.module('eventsApp');
+	eventsApp.controller('HelloCtrl',
+	  function ($scope) {
+	
+	    $scope.name = 'World';
+	
+	  }
+	);
 
 
 /***/ }
