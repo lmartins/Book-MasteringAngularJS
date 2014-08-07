@@ -15,6 +15,13 @@
       <h1>Hello, {{name}}</h1>
     </div>
 
+    <ul ng-controller="WorldCtrl">
+      <li ng-repeat="country in countries">
+        {{country.name}} has a population of {{country.population}} <br>
+        {{ worldPercentage(country.population) | number:2 }} % of the World's population
+      </li>
+    </ul>
+
   </div>
 
   <script src="//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>

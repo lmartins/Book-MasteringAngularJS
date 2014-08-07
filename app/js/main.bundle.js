@@ -1,6 +1,6 @@
 /*!
  * AngularJSFundamentals
- * 0.1.0:1407427095783 [development build]
+ * 0.1.0:1407436126047 [development build]
  */
 webpackJsonp([1],[
 /* 0 */
@@ -9,15 +9,15 @@ webpackJsonp([1],[
 	'use strict';
 	
 	// var angular = require('angular');
-	__webpack_require__(1);
+	__webpack_require__(6);
 	
 	var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngCookies', 'ngRoute']);
 	
 	// CONTROLLERS ----------------------------------------------------------------
-	__webpack_require__(2);
+	__webpack_require__(7);
 	
 	// HELLO WORD -----------------------------------------------------------------
-	__webpack_require__(3);
+	__webpack_require__(8);
 	
 	
 	// DIRECTIVES -----------------------------------------------------------------
@@ -30,10 +30,33 @@ webpackJsonp([1],[
 	
 	// SERVICES -------------------------------------------------------------------
 	// require('./services/calendarHelper');
+	
+	
+	// CONTROLLERS À LÁ CARTE
+	// Quick code snippets to be removed or placed in proper places
+	
+	eventsApp.controller('WorldCtrl',
+	  function ($scope) {
+	    $scope.worldPopulation = 700;
+	    $scope.countries = [
+	      { name: 'France', population: 63.1 },
+	      { name: 'United Kingdom', population: 61.8 },
+	    ];
+	
+	    $scope.worldPercentage = function (countryPopulation) {
+	      return (countryPopulation / $scope.worldPopulation) * 100;
+	    }
+	  }
+	);
 
 
 /***/ },
-/* 1 */
+/* 1 */,
+/* 2 */,
+/* 3 */,
+/* 4 */,
+/* 5 */,
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -245,7 +268,7 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 2 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -298,15 +321,18 @@ webpackJsonp([1],[
 
 
 /***/ },
-/* 3 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
 	
 	var eventsApp = angular.module('eventsApp');
+	
 	eventsApp.controller('HelloCtrl',
 	  function ($scope) {
 	
 	    $scope.name = 'World';
+	    console.log($scope.$parent);
 	
 	  }
 	);
