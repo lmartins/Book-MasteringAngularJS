@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="eventsApp" ng-init="name = 'world'">
+<html ng-app="eventsApp">
 
 <head>
   <title>Mastering AngularJS</title>
@@ -8,11 +8,26 @@
 
 <body>
 
-  <div class="container">
+  <div class="container" ng-controller="MainCtrl">
 
-    <div ng-controller="HelloCtrl">
-      <input type="text" ng-model="name">
-      <h1>Hello, {{name}}</h1>
+    <input type="text" ng-model="data.message">
+    <h1>Hello, {{data.message}}</h1>
+
+    <div ng-controller="FirstCtrl">
+      <input type="text" ng-model="data.message">
+      <h1>Hello, {{data.message}}</h1>
+    </div>
+
+    <div ng-controller="SecondCtrl">
+      <input type="text" ng-model="data.message">
+      <h1>Hello, {{data.message}}</h1>
+    </div>
+
+    <div ng-controller="TextAreaLimitCtrl">
+      <div ng-class="{ 'text-warning' : shouldWarn() }">Remaining: {{remaining()}}</div>
+      <textarea rows="3" ng-model="message">{{message}}</textarea>
+      <button ng-click="send()" ng-disabled="!hasValidLength()">Send</button>
+      <button ng-click="clear()">Clear</button>
     </div>
 
     <ul ng-controller="WorldCtrl">

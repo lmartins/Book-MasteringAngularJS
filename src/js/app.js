@@ -9,7 +9,7 @@ var eventsApp = angular.module('eventsApp', ['ngSanitize', 'ngResource', 'ngCook
 require('./config');
 
 // HELLO WORD -----------------------------------------------------------------
-require('./HelloWorld/controllers/helloWorldCtrl.js');
+// require('./HelloWorld/controllers/helloWorldCtrl.js');
 
 
 // DIRECTIVES -----------------------------------------------------------------
@@ -29,6 +29,7 @@ require('./HelloWorld/controllers/helloWorldCtrl.js');
 
 eventsApp.controller('WorldCtrl',
   function ($scope) {
+
     $scope.worldPopulation = 700;
     $scope.countries = [
       { name: 'France', population: 63.1 },
@@ -38,5 +39,46 @@ eventsApp.controller('WorldCtrl',
     $scope.worldPercentage = function (countryPopulation) {
       return (countryPopulation / $scope.worldPopulation) * 100;
     }
+
+  }
+);
+
+eventsApp.factory('Data', function () {
+  return {
+    message: 'Im data from a service'
+  }
+});
+
+eventsApp.controller('MainCtrl',
+  function ($scope, Data) {
+    $scope.data = Data;
+  }
+);
+
+eventsApp.controller('FirstCtrl',
+  function ($scope, Data) {
+    $scope.data = Data;
+  }
+);
+
+eventsApp.controller('TextAreaLimitCtrl',
+  function ($scope) {
+
+    $scope.message = '';
+
+    $scope.remaining = function () {
+      return 200 - $scope.message.length;
+    };
+
+    $scope.shouldWarn = function () {
+      return $scope.remaining() < 10;
+    };
+
+  }
+);
+
+eventsApp.controller('SecondCtrl',
+  function ($scope, Data) {
+    $scope.data = Data;
   }
 );

@@ -1,6 +1,6 @@
 /*!
  * AngularJSFundamentals
- * 0.1.0:1407436126047 [development build]
+ * 0.1.0:1407487862211 [development build]
  */
 webpackJsonp([1],[
 /* 0 */
@@ -17,7 +17,7 @@ webpackJsonp([1],[
 	__webpack_require__(7);
 	
 	// HELLO WORD -----------------------------------------------------------------
-	__webpack_require__(8);
+	// require('./HelloWorld/controllers/helloWorldCtrl.js');
 	
 	
 	// DIRECTIVES -----------------------------------------------------------------
@@ -37,6 +37,7 @@ webpackJsonp([1],[
 	
 	eventsApp.controller('WorldCtrl',
 	  function ($scope) {
+	
 	    $scope.worldPopulation = 700;
 	    $scope.countries = [
 	      { name: 'France', population: 63.1 },
@@ -46,6 +47,47 @@ webpackJsonp([1],[
 	    $scope.worldPercentage = function (countryPopulation) {
 	      return (countryPopulation / $scope.worldPopulation) * 100;
 	    }
+	
+	  }
+	);
+	
+	eventsApp.factory('Data', function () {
+	  return {
+	    message: 'Im data from a service'
+	  }
+	});
+	
+	eventsApp.controller('MainCtrl',
+	  function ($scope, Data) {
+	    $scope.data = Data;
+	  }
+	);
+	
+	eventsApp.controller('FirstCtrl',
+	  function ($scope, Data) {
+	    $scope.data = Data;
+	  }
+	);
+	
+	eventsApp.controller('TextAreaLimitCtrl',
+	  function ($scope) {
+	
+	    $scope.message = '';
+	
+	    $scope.remaining = function () {
+	      return 200 - $scope.message.length;
+	    };
+	
+	    $scope.shouldWarn = function () {
+	      return $scope.remaining() < 10;
+	    };
+	
+	  }
+	);
+	
+	eventsApp.controller('SecondCtrl',
+	  function ($scope, Data) {
+	    $scope.data = Data;
 	  }
 	);
 
@@ -318,24 +360,6 @@ webpackJsonp([1],[
 	  $routeProvider.otherwise({redirectTo: '/events'});
 	  // $locationProvider.html5Mode(true);
 	});
-
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var eventsApp = angular.module('eventsApp');
-	
-	eventsApp.controller('HelloCtrl',
-	  function ($scope) {
-	
-	    $scope.name = 'World';
-	    console.log($scope.$parent);
-	
-	  }
-	);
 
 
 /***/ }

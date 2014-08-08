@@ -60,7 +60,6 @@ gulp.task('sass', function() {
         ))
     .pipe( gulp.dest( config.SASS.build ) )
     .pipe( browserSync.reload({ stream: true }) );
-    // .pipe( plugins.livereload() );
 });
 
 
